@@ -1,12 +1,19 @@
 import React from 'react';
 import FrameItem from "./FrameItem";
 
-const FramesList = ({frames}) => {
+const FramesList = ({frames, remove}) => {
     return (
         <div>
-            <h2>Timeline</h2>
             {frames.map(frame =>
-                <FrameItem frame={frame} key={frame.id}/>
+                <FrameItem
+                    frame={
+                        {
+                            id: frames.indexOf(frame),
+                            scene_id: frame.scene_id
+                        }
+                    }
+                    remove={remove}
+                    key={frames.indexOf(frame)+1}/>
             )}
         </div>
     );
